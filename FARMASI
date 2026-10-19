@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misi Farmasi Cikgu Afifah</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffffff 0, #ffffff 8%, transparent 9%),
+        linear-gradient(135deg, #d7f9ff, #fef6ff, #eaffea);
+      min-height: 100vh;
+      padding: 20px;
+      color: #234;
+      text-align: center;
+    }
+
+    .pharmacy-top {
+      max-width: 900px;
+      margin: 0 auto 15px auto;
+      background: #ffffff;
+      border: 5px solid #8ee6d2;
+      border-radius: 25px;
+      padding: 15px;
+      box-shadow: 0 8px 0 #62cbb5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pharmacy-sign {
+      display: inline-block;
+      background: #ff6b9a;
+      color: white;
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 0 5px 0 #d94d7b;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 10px 0;
+      color: #0077b6;
+      font-size: 36px;
+    }
+
+    .pharmacy-icons {
+      font-size: 34px;
+      margin-top: 8px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #456;
+      margin: 8px 0 0;
+    }
+
+    .teacher-name {
+      display: inline-block;
+      margin-top: 10px;
+      background: #fff8d6;
+      border: 3px solid #ffd166;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: bold;
+      color: #ff6b00;
+    }
+
+    .game-container {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .side-panel {
+      background: #fff8d6;
+      border: 4px solid #ffd166;
+      border-radius: 25px;
+      padding: 18px;
+      box-shadow: 0 8px 0 #e8b84e;
+    }
+
+    .mascot {
+      font-size: 85px;
+      margin-bottom: 8px;
+    }
+
+    .mascot-name {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 10px;
+      font-weight: bold;
+      color: #ff6b00;
+      margin-bottom: 15px;
+      border: 3px solid #ffe29a;
+    }
+
+    .shelf {
+      background: #ffffff;
+      border: 3px dashed #ffb703;
+      border-radius: 18px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+
+    .shelf-title {
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 8px;
+    }
+
+    .shelf-icons {
+      font-size: 28px;
+      line-height: 1.7;
+    }
+
+    .game-box {
+      background: white;
+      border: 5px solid #90e0ef;
+      border-radius: 30px;
+      padding: 25px;
+      box-shadow: 0 8px 0 #48cae4;
+      min-height: 520px;
+    }
+
+    .progress-wrap {
+      background: #e9f5f9;
+      border-radius: 30px;
+      padding: 5px;
+      margin-bottom: 15px;
+      border: 2px solid #bde0fe;
+    }
+
+    .progress-bar {
+      height: 22px;
+      width: 0%;
+      background: linear-gradient(90deg, #06d6a0, #00b4d8);
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+
+    .question-card {
+      background: #f1fbff;
+      border: 3px solid #caf0f8;
+      border-radius: 25px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .item-emoji {
+      font-size: 90px;
+      background: white;
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: 4px solid #ffd6e8;
+      box-shadow: 0 5px 0 #ffb3d1;
+      margin-bottom: 12px;
+    }
+
+    .question-no {
+      display: inline-block;
+      background: #8338ec;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 30px;
+      font-weight: bold;
+      color: #023047;
+      margin: 15px 0;
+    }
+
+    .instruction {
+      color: #555;
+      font-size: 17px;
+      margin-bottom: 15px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 13px;
+    }
+
+    .answers button {
+      border: none;
+      padding: 16px;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      background: #caf0f8;
+      color: #023047;
+      box-shadow: 0 5px 0 #90e0ef;
+      transition: 0.15s;
+    }
+
+    .answers button:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: #ade8f4;
+    }
+
+    .answers button:disabled {
+      cursor: not-allowed;
+    }
+
+    .feedback {
+      min-height: 55px;
+      margin-top: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .correct {
+      background: #d8f8dc;
+      color: #15803d;
+      border: 3px solid #95d5b2;
+    }
+
+    .wrong {
+      background: #ffe1e1;
+      color: #c1121f;
+      border: 3px solid #ffb3b3;
+    }
+
+    .next-btn,
+    .start-btn,
+    .restart-btn {
+      margin-top: 15px;
+      padding: 15px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      background: #ff9f1c;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #d68100;
+      transition: 0.15s;
+    }
+
+    .next-btn:hover,
+    .start-btn:hover,
+    .restart-btn:hover {
+      transform: translateY(-2px);
+      background: #fb8500;
+    }
+
+    .score-board {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: #ffffff;
+      border: 3px solid #bde0fe;
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-weight: bold;
+      color: #0077b6;
+    }
+
+    .home-screen,
+    .result-screen {
+      padding: 20px;
+    }
+
+    .big-title {
+      font-size: 36px;
+      color: #0077b6;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .home-emoji {
+      font-size: 110px;
+      margin: 15px 0;
+    }
+
+    .rules {
+      background: #fff8d6;
+      border: 3px dashed #ffbe0b;
+      border-radius: 22px;
+      padding: 15px;
+      text-align: left;
+      max-width: 520px;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .star {
+      font-size: 32px;
+      color: #ffbe0b;
+    }
+
+    .final-score {
+      font-size: 34px;
+      color: #ff006e;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .medicine-footer {
+      max-width: 900px;
+      margin: 25px auto 0;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 12px;
+      font-size: 15px;
+      color: #456;
+      border: 2px solid #caf0f8;
+    }
+
+    @media (max-width: 760px) {
+      .game-container {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .question {
+        font-size: 25px;
+      }
+
+      .answers button {
+        font-size: 19px;
+      }
+
+      .pharmacy-sign {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="pharmacy-top">
+    <div class="pharmacy-sign">🏥 Farmasi Ceria</div>
+    <h1>💊 Misi Penjodoh Bilangan 💊</h1>
+    <p class="subtitle">Game Bahasa Melayu Tahun 4 bertema farmasi</p>
+    <div class="teacher-name">Disediakan oleh Cikgu Afifah 🌸</div>
+    <div class="pharmacy-icons">🧴 💊 🩹 🌡️ 💉 🧤 📦</div>
+  </div>
+
+  <div class="game-container">
+
+    <div class="side-panel">
+      <div class="mascot">👩‍⚕️</div>
+      <div class="mascot-name">Saya Cikgu Afifah!</div>
+      <p>Bantu saya pilih penjodoh bilangan yang betul untuk barang di farmasi.</p>
+
+      <div class="shelf">
+        <div class="shelf-title">Rak Farmasi</div>
+        <div class="shelf-icons">
+          🧴 🧴 🧴<br>
+          💊 💊 💊<br>
+          🩹 🩹 🩹<br>
+          🌡️ 💉 🧤
+        </div>
+      </div>
+
+      <div class="shelf">
+        <div class="shelf-title">Tip Ingatan</div>
+        <p style="margin:0;">
+          Botol = <b>sebotol</b><br>
+          Tablet = <b>sebiji</b><br>
+          Plaster = <b>sekeping</b><br>
+          Sarung tangan = <b>sepasang</b>
+        </p>
+      </div>
+    </div>
+
+    <div class="game-box">
+
+      <div id="homeScreen" class="home-screen">
+        <div class="home-emoji">🧑‍⚕️💊</div>
+        <div class="big-title">Selamat Datang ke Farmasi Ceria!</div>
+        <p>Jom bantu Cikgu Afifah lengkapkan penjodoh bilangan yang betul.</p>
+
+        <div class="rules">
+          <b>Cara bermain:</b>
+          <ol>
+            <li>Baca soalan dengan teliti.</li>
+            <li>Pilih penjodoh bilangan yang sesuai.</li>
+            <li>Jika betul, kamu dapat 1 markah.</li>
+            <li>Tekan butang seterusnya untuk teruskan.</li>
+          </ol>
+        </div>
+
+        <button class="start-btn" onclick="startGame()">Mula Bermain 🚀</button>
+      </div>
+
+      <div id="quizScreen" style="display:none;">
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-no" id="questionNo">Soalan 1</div>
+          <br>
+          <div class="item-emoji" id="itemEmoji">💊</div>
+          <div class="instruction">Pilih penjodoh bilangan yang betul.</div>
+          <div class="question" id="questionText">_____ ubat</div>
+        </div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display:none;">
+          Soalan Seterusnya ➡️
+        </button>
+
+        <div class="score-board">
+          <div class="badge" id="scoreText">Skor: 0</div>
+          <div class="badge" id="questionTextSmall">Soalan: 1 / 10</div>
+        </div>
+      </div>
+
+      <div id="resultScreen" class="result-screen" style="display:none;">
+        <div class="home-emoji">🏆</div>
+        <div class="big-title">Syabas!</div>
+        <div class="star">⭐ ⭐ ⭐</div>
+        <div class="final-score" id="finalScore">Skor: 0 / 10</div>
+        <p id="finalMessage"></p>
+        <button class="restart-btn" onclick="restartGame()">Main Semula 🔁</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="medicine-footer">
+    Disediakan oleh <b>Cikgu Afifah</b> 🌸<br>
+    Nota: Game ini untuk pembelajaran Bahasa Melayu. Jangan makan ubat tanpa nasihat orang dewasa atau ahli farmasi.
+  </div>
+
+  <script>
+    const questions = [
+      {
+        emoji: "🧴",
+        question: "_____ ubat sirap",
+        answers: ["Sebotol", "Sebiji", "Sehelai"],
+        correct: "Sebotol"
+      },
+      {
+        emoji: "💊",
+        question: "_____ tablet",
+        answers: ["Sebatang", "Sebiji", "Sekeping"],
+        correct: "Sebiji"
+      },
+      {
+        emoji: "🧴",
+        question: "_____ krim sapu",
+        answers: ["Setiub", "Sebakul", "Seutas"],
+        correct: "Setiub"
+      },
+      {
+        emoji: "🌡️",
+        question: "_____ termometer",
+        answers: ["Sebatang", "Segelas", "Sehelai"],
+        correct: "Sebatang"
+      },
+      {
+        emoji: "🩹",
+        question: "_____ plaster luka",
+        answers: ["Sekeping", "Sebiji", "Seutas"],
+        correct: "Sekeping"
+      },
+      {
+        emoji: "🧻",
+        question: "_____ pembalut luka",
+        answers: ["Segulung", "Sebatang", "Sebiji"],
+        correct: "Segulung"
+      },
+      {
+        emoji: "🧤",
+        question: "_____ sarung tangan",
+        answers: ["Sepasang", "Sebatang", "Sehelai"],
+        correct: "Sepasang"
+      },
+      {
+        emoji: "💊",
+        question: "_____ kapsul",
+        answers: ["Sebiji", "Sekaki", "Sebilah"],
+        correct: "Sebiji"
+      },
+      {
+        emoji: "📦",
+        question: "_____ kotak ubat",
+        answers: ["Sekotak", "Sebotol", "Sebatang"],
+        correct: "Sekotak"
+      },
+      {
+        emoji: "💉",
+        question: "_____ picagari",
+        answers: ["Sebatang", "Sehelai", "Sebiji"],
+        correct: "Sebatang"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function startGame() {
+      document.getElementById("homeScreen").style.display = "none";
+      document.getElementById("quizScreen").style.display = "block";
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      answered = false;
+
+      const q = questions[currentQuestion];
+
+      document.getElementById("questionNo").innerHTML = "Soalan " + (currentQuestion + 1);
+      document.getElementById("itemEmoji").innerHTML = q.emoji;
+      document.getElementById("questionText").innerHTML = q.question;
+      document.getElementById("feedback").innerHTML = "";
+      document.getElementById("feedback").className = "feedback";
+      document.getElementById("nextBtn").style.display = "none";
+
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+
+      q.answers.forEach(answer => {
+        const btn = document.createElement("button");
+        btn.innerHTML = answer;
+        btn.onclick = function() {
+          checkAnswer(answer, btn);
+        };
+        answersDiv.appendChild(btn);
+      });
+
+      updateScore();
+      updateProgress();
+    }
+
+    function checkAnswer(answer, selectedButton) {
+      if (answered) return;
+
+      answered = true;
+
+      const q = questions[currentQuestion];
+      const feedback = document.getElementById("feedback");
+      const buttons = document.querySelectorAll(".answers button");
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+      });
+
+      if (answer === q.correct) {
+        score++;
+        feedback.innerHTML = "✅ Betul! Hebat, ahli farmasi cilik!";
+        feedback.className = "feedback correct";
+        selectedButton.style.background = "#b7efc5";
+        selectedButton.style.boxShadow = "0 5px 0 #76c893";
+      } else {
+        feedback.innerHTML = "❌ Hampir betul. Jawapan yang betul ialah <b>" + q.correct + "</b>.";
+        feedback.className = "feedback wrong";
+        selectedButton.style.background = "#ffccd5";
+        selectedButton.style.boxShadow = "0 5px 0 #ff8fa3";
+
+        buttons.forEach(btn => {
+          if (btn.innerHTML === q.correct) {
+            btn.style.background = "#b7efc5";
+            btn.style.boxShadow = "0 5px 0 #76c893";
+          }
+        });
+      }
+
+      document.getElementById("nextBtn").style.display = "inline-block";
+      updateScore();
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("quizScreen").style.display = "none";
+      document.getElementById("resultScreen").style.display = "block";
+
+      document.getElementById("finalScore").innerHTML = "Skor: " + score + " / " + questions.length;
+
+      let message = "";
+
+      if (score >= 9) {
+        message = "Cemerlang! Kamu memang pakar penjodoh bilangan di Farmasi Ceria.";
+      } else if (score >= 7) {
+        message = "Bagus sekali! Kamu sudah semakin mahir.";
+      } else if (score >= 5) {
+        message = "Usaha yang baik! Cuba lagi untuk dapat skor lebih tinggi.";
+      } else {
+        message = "Jangan putus asa. Mari ulang kaji dan cuba sekali lagi bersama Cikgu Afifah.";
+      }
+
+      document.getElementById("finalMessage").innerHTML = message;
+      document.getElementById("progressBar").style.width = "100%";
+    }
+
+    function restartGame() {
+      currentQuestion = 0;
+      score = 0;
+      answered = false;
+
+      document.getElementById("resultScreen").style.display = "none";
+      document.getElementById("quizScreen").style.display = "block";
+
+      loadQuestion();
+    }
+
+    function updateScore() {
+      document.getElementById("scoreText").innerHTML = "Skor: " + score;
+      document.getElementById("questionTextSmall").innerHTML =
+        "Soalan: " + (currentQuestion + 1) + " / " + questions.length;
+    }
+
+    function updateProgress() {
+      const percent = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById("progressBar").style.width = percent + "%";
+    }
+  </script>
+
+</body>
+</html>
